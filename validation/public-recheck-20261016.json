@@ -1,0 +1,42 @@
+{
+  "verified_on": "2026-10-16",
+  "repository": "https://github.com/Gahao123/riscv-dev-env",
+  "commit": "c191c0388eddf621371e398657d29efc0b09960e",
+  "public_clone_unchanged": true,
+  "anonymous_access": "public repository metadata retrieved without credentials",
+  "fresh_source_downloads": 5,
+  "build_24": "original published Dockerfile, complete --no-cache build",
+  "build_26": "unchanged published development stage, --no-cache; imports the same completed toolchain-builder image",
+  "runtime_stage_sha256": "ebc0391cd6d1d2eb97332017711028cacd45081485ca7c48ee1677f9680e3b59",
+  "readme_script_retest": "two redundant attempts intentionally interrupted after local legacy cache lookup missed; not claimed as completed",
+  "base_image_policy": "docker pull revalidated locked remote manifests; existing base layers reused",
+  "started_utc": "2026-10-16T10:22:46Z",
+  "finished_utc": "2026-10-16T11:26:20Z",
+  "baselines": {
+    "24.04": {
+      "image_id": "sha256:b70edf2c2f8425fa45f7e2b438b4d5a3346e7b84b5c0b6937d3460ecdbdfc7db",
+      "image_size_bytes": 1357140896,
+      "fresh_default_user_probe": "passed",
+      "offline_probe": "passed",
+      "intentional_failure_exit_code": 1,
+      "custom_uid_bind_mount_probe": "passed",
+      "rv64gc_lp64d_arithmetic_probe": "passed",
+      "compiler_sha256": "fed5890fb648b9f3bf7b6abfe441e41da406c60b558842bda4e229e2ceaa1556"
+    },
+    "26.04": {
+      "image_id": "sha256:541c1b99516a9358e083349fc93a746b1f3fa9bd0cc93b8ff46f461186a480cd",
+      "image_size_bytes": 1386393564,
+      "fresh_default_user_probe": "passed",
+      "offline_probe": "passed",
+      "intentional_failure_exit_code": 1,
+      "custom_uid_bind_mount_probe": "passed",
+      "rv64gc_lp64d_arithmetic_probe": "passed",
+      "compiler_sha256": "fed5890fb648b9f3bf7b6abfe441e41da406c60b558842bda4e229e2ceaa1556"
+    }
+  },
+  "limitations": [
+    "same WSL/Docker host as earlier prototype",
+    "26.04 original full script was not separately run through to completion",
+    "no ACT4 certification, full ISA/ABI or target-library runtime coverage"
+  ]
+}

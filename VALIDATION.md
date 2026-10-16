@@ -4,6 +4,8 @@ Date: 2026-10-14 (Asia/Shanghai).
 
 Both Phase 1 prototype development images built and passed executable integration probes in fresh containers. These are local results, not official ACT certification or an agreed final acceptance standard.
 
+A later [public-checkout revalidation on 2026-10-16](validation/public-recheck-20261016.md) records a full original Ubuntu 24.04 rebuild and a staged Ubuntu 26.04 rebuild sharing the verified compiler. It also documents the local legacy Docker cache misses and the direct-script checks that were intentionally interrupted. The original results below remain the 2026-10-14 record.
+
 This report is intended for users and reviewers to understand what was tested and the limits of those results. Build instructions are in [README.md](README.md); the logs under `validation/` record the run reported here.
 
 ## Rerun the integration probes

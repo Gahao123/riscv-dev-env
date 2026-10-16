@@ -9,7 +9,7 @@ Prototype for [RISC-V DevPartners #47](https://github.com/riscv-admin/dev-partne
 - RISC-V GCC: 16.2.0, built with Newlib and installed under `/opt/riscv`.
 - Spike: latest official release `v1.1.0`, with an attributed upstream GCC-header compatibility backport, installed under `/opt/spike`.
 - Toolchain default: RV64GC / LP64D, without multilib. The freestanding probe explicitly uses RV64IMAC plus Zicsr / LP64; Spike v1.1.0 includes CSR instructions in its older I model.
-- The cross toolchain is built once on Ubuntu 24.04 and reused in both runtime images; Spike is built separately on each runtime baseline. Both images need independent runtime verification.
+- The cross-toolchain build stage always uses Ubuntu 24.04, and both runtime images consume its installed artifacts. Docker can reuse that stage when its build cache is available; without a cache hit, it will rebuild the toolchain. Spike is built separately on each runtime baseline. Both images need independent runtime verification.
 
 This first prototype addresses the development container. CI-minimal images, locked certification environments, VM images, ACT4 integration, and real-board support are subsequent work. The smoke probe is not an architectural certification test.
 

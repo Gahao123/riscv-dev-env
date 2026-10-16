@@ -1,0 +1,25 @@
+uid=1000(ubuntu) gid=1000(ubuntu) groups=1000(ubuntu)
+/opt/riscv/riscv64-unknown-elf/bin/ld: warning: example.elf has a LOAD segment with RWX permissions
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           RISC-V
+  Version:                           0x1
+  Entry point address:               0x80000000
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          5192 (bytes into file)
+  Flags:                             0x5, RVC, double-float ABI
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         3
+  Size of section headers:           64 (bytes)
+  Number of section headers:         10
+  Section header string table index: 9
+    8000007c:	02d7f7d3          	fadd.d	fa5,fa5,fa3
+    80000082:	a2e7a553          	feq.d	a0,fa5,fa4
+PASS: bind mount, custom UID, RV64GC/LP64D arithmetic execution

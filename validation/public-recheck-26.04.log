@@ -1,0 +1,72 @@
+PRETTY_NAME="Ubuntu 26.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="26.04"
+VERSION="26.04.1 LTS (Resolute Raccoon)"
+VERSION_CODENAME=resolute
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=resolute
+LOGO=ubuntu-logo
+uid=1001(riscv) gid=1001(riscv) groups=1001(riscv)
+v1.1.0
+530af85d83781a3dae31a4ace84a573ec255fefa
+Compatibility backport: 0a7bb5403d0290cea8b2356179d92e4c61ffd51d (Julien Olivain)
++ set -euo pipefail
++ tests=/usr/share/riscv-dev-env/tests
+++ mktemp -d /tmp/riscv-smoke.XXXXXX
++ tmp=/tmp/riscv-smoke.yBrobj
++ trap 'rm -rf -- "$tmp"' EXIT
++ compiler=riscv64-unknown-elf-gcc
+++ riscv64-unknown-elf-gcc -dumpmachine
++ test riscv64-unknown-elf = riscv64-unknown-elf
+++ riscv64-unknown-elf-gcc -dumpfullversion
++ test 16.2.0 = 16.2.0
++ riscv64-unknown-elf-gcc --version
++ head -1
+riscv64-unknown-elf-gcc () 16.2.0
++ cat /opt/spike/share/source-version.txt
+v1.1.0
+530af85d83781a3dae31a4ace84a573ec255fefa
+Compatibility backport: 0a7bb5403d0290cea8b2356179d92e4c61ffd51d (Julien Olivain)
++ common=(-march=rv64imac_zicsr -mabi=lp64 -mcmodel=medany -msmall-data-limit=0 -O2 -ffreestanding -nostdlib -nostartfiles -Wl,--no-relax -Wl,-T,"$tests/link.ld")
++ riscv64-unknown-elf-gcc -march=rv64imac_zicsr -mabi=lp64 -mcmodel=medany -msmall-data-limit=0 -O2 -ffreestanding -nostdlib -nostartfiles -Wl,--no-relax -Wl,-T,/usr/share/riscv-dev-env/tests/link.ld /usr/share/riscv-dev-env/tests/start.S /usr/share/riscv-dev-env/tests/smoke.c -o /tmp/riscv-smoke.yBrobj/pass.elf
+/opt/riscv/riscv64-unknown-elf/bin/ld: warning: /tmp/riscv-smoke.yBrobj/pass.elf has a LOAD segment with RWX permissions
++ riscv64-unknown-elf-readelf -h /tmp/riscv-smoke.yBrobj/pass.elf
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           RISC-V
+  Version:                           0x1
+  Entry point address:               0x80000000
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          5040 (bytes into file)
+  Flags:                             0x1, RVC, soft-float ABI
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         3
+  Size of section headers:           64 (bytes)
+  Number of section headers:         9
+  Section header string table index: 8
++ timeout 20 spike --isa=RV64IMAC /tmp/riscv-smoke.yBrobj/pass.elf
++ riscv64-unknown-elf-g++ -march=rv64imac_zicsr -mabi=lp64 -mcmodel=medany -msmall-data-limit=0 -O2 -ffreestanding -nostdlib -nostartfiles -Wl,--no-relax -Wl,-T,/usr/share/riscv-dev-env/tests/link.ld -std=c++20 -fno-exceptions -fno-rtti /usr/share/riscv-dev-env/tests/start.S /usr/share/riscv-dev-env/tests/smoke.cpp -o /tmp/riscv-smoke.yBrobj/pass-cxx.elf
+/opt/riscv/riscv64-unknown-elf/bin/ld: warning: /tmp/riscv-smoke.yBrobj/pass-cxx.elf has a LOAD segment with RWX permissions
++ timeout 20 spike --isa=RV64IMAC /tmp/riscv-smoke.yBrobj/pass-cxx.elf
++ riscv64-unknown-elf-gcc -march=rv64imac_zicsr -mabi=lp64 -mcmodel=medany -msmall-data-limit=0 -O2 -ffreestanding -nostdlib -nostartfiles -Wl,--no-relax -Wl,-T,/usr/share/riscv-dev-env/tests/link.ld -DEXPECT_FAIL /usr/share/riscv-dev-env/tests/start.S /usr/share/riscv-dev-env/tests/smoke.c -o /tmp/riscv-smoke.yBrobj/fail.elf
+/opt/riscv/riscv64-unknown-elf/bin/ld: warning: /tmp/riscv-smoke.yBrobj/fail.elf has a LOAD segment with RWX permissions
++ set +e
++ timeout 20 spike --isa=RV64IMAC /tmp/riscv-smoke.yBrobj/fail.elf
+PASS: C/C++ compilation, RISC-V execution and failure propagation
++ status=1
++ set -e
++ [[ 1 != 1 ]]
++ printf 'PASS: C/C++ compilation, RISC-V execution and failure propagation\n'
++ rm -rf -- /tmp/riscv-smoke.yBrobj
