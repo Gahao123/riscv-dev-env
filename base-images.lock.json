@@ -1,0 +1,9 @@
+{
+  "checked_on": "2026-10-14",
+  "initial_platform": "linux/amd64",
+  "images": {
+    "24.04": "public.ecr.aws/docker/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
+    "26.04": "public.ecr.aws/docker/library/ubuntu:26.04@sha256:f144425ff09be612d6d9ad965196e9cdc23dae1f42110a8a11a3e9a8198759f7"
+  },
+  "note": "The mirror manifest digests matched docker.io/library/ubuntu when queried on 2026-10-14. Refresh these locks explicitly when updating the Ubuntu baseline."
+}

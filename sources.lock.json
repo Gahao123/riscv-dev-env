@@ -1,0 +1,41 @@
+{
+  "checked_on": "2026-10-14",
+  "gcc_version": "16.2.0",
+  "spike_version": "v1.1.0",
+  "toolchain_recipe": "2026.08.27",
+  "sources": [
+    {
+      "name": "gcc",
+      "file": "gcc-16.2.0.tar.xz",
+      "url": "https://gcc.gnu.org/pub/gcc/releases/gcc-16.2.0/gcc-16.2.0.tar.xz",
+      "sha512": "c51c30ca7422d0cbecf504b2e0f33c3aca31e0f90a76b65217f465163fa6fa17b3f5de39e145c47e5bab90ac0ce7fff3b03c8d553ae36e01faaea5a50f8648d1"
+    },
+    {
+      "name": "toolchain",
+      "file": "toolchain-2026.08.27.tar.gz",
+      "url": "https://codeload.github.com/riscv-collab/riscv-gnu-toolchain/tar.gz/refs/tags/2026.08.27",
+      "sha256": "9b9b2c47defc2d40427831d8741f90d2c8c5ea01d6c16de98ae5d19e9b1a58bc"
+    },
+    {
+      "name": "binutils",
+      "file": "binutils-6ce87bbc.tar.gz",
+      "url": "https://codeload.github.com/gnutools/binutils-gdb/tar.gz/6ce87bbc521cf46eaee9a1f7ef61cee2cdfb3e32",
+      "revision": "6ce87bbc521cf46eaee9a1f7ef61cee2cdfb3e32",
+      "sha256": "98bf9c5cda53343a062d62d94330be07f43683de63d6dd9174da6ed00ed7dcf2"
+    },
+    {
+      "name": "newlib",
+      "file": "newlib-8ba4275b.tar.gz",
+      "url": "https://codeload.github.com/cygwin/cygwin/tar.gz/8ba4275b83ec27529f67e0d477611fa6d8d6e6bd",
+      "revision": "8ba4275b83ec27529f67e0d477611fa6d8d6e6bd",
+      "sha256": "8e27b243f9e677af3714e411fd9b7bdb687b2963218a08c48a109b5537e033cc"
+    },
+    {
+      "name": "spike",
+      "file": "spike-v1.1.0.tar.gz",
+      "url": "https://codeload.github.com/riscv-software-src/riscv-isa-sim/tar.gz/530af85d83781a3dae31a4ace84a573ec255fefa",
+      "revision": "530af85d83781a3dae31a4ace84a573ec255fefa",
+      "sha256": "a58e6a73c828f6305fa4a5b49af42adc9c502b260ac7589e7126d70d32399704"
+    }
+  ]
+}

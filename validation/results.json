@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-14",
+  "phase": "local Phase 1 prototype",
+  "platform": "linux/amd64",
+  "gcc_source_build_baseline": "Ubuntu 24.04",
+  "gcc_version": "16.2.0",
+  "spike_tag": "v1.1.0",
+  "spike_backport": "0a7bb5403d0290cea8b2356179d92e4c61ffd51d",
+  "baselines": {
+    "24.04": {
+      "image_id": "sha256:53285d8e39d5d7860de9d9cdb4dbc61f9e5b674b73f9fe7c9650d7a57cc711b3",
+      "image_bytes": 1357140080,
+      "image_build": "passed",
+      "fresh_container_probe": "passed",
+      "uid": 1001,
+      "c_exit_code": 0,
+      "cpp_exit_code": 0,
+      "intentional_failure_exit_code": 1
+    },
+    "26.04": {
+      "image_id": "sha256:19c6533d2f2bd4587f77e0939f57d57aab850d3c6ec1ebe83ae977438a046b7f",
+      "image_bytes": 1386391715,
+      "image_build": "passed",
+      "fresh_container_probe": "passed",
+      "uid": 1001,
+      "c_exit_code": 0,
+      "cpp_exit_code": 0,
+      "intentional_failure_exit_code": 1
+    }
+  }
+}

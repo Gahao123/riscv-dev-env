@@ -1,0 +1,24 @@
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for fgrep... /usr/bin/grep -F
+checking for grep that handles long lines and -e... (cached) /usr/bin/grep
+checking for bash... /bin/bash
+checking for __gmpz_init in -lgmp... yes
+checking for mpfr_init in -lmpfr... yes
+checking for mpc_init2 in -lmpc... yes
+checking for curl... /usr/bin/curl
+checking for wget... no
+checking for ftp... no
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating scripts/wrapper/awk/awk
+config.status: creating scripts/wrapper/sed/sed
+PASS: removing ignored --disable-qemu leaves generated Makefile unchanged

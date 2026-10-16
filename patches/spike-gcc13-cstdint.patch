@@ -1,0 +1,25 @@
+From 0a7bb5403d0290cea8b2356179d92e4c61ffd51d Mon Sep 17 00:00:00 2001
+From: Julien Olivain <ju.o@free.fr>
+Date: Wed, 15 Mar 2023 20:24:38 +0000
+Subject: [PATCH] fesvr: fix compilation with gcc 13
+
+Upstream: https://github.com/riscv-software-src/riscv-isa-sim/commit/0a7bb5403d0290cea8b2356179d92e4c61ffd51d
+Backport-to: Spike v1.1.0
+
+Explicitly include the fixed-width integer header after GCC's transitive
+header dependencies changed. This is the upstream one-line fix, retained
+with its author credit for the pinned release build.
+
+Signed-off-by: Julien Olivain <ju.o@free.fr>
+---
+diff --git a/fesvr/device.h b/fesvr/device.h
+--- a/fesvr/device.h
++++ b/fesvr/device.h
+@@ -6,6 +6,7 @@
+ #include <cstring>
+ #include <string>
+ #include <functional>
++#include <cstdint>
+ 
+ class memif_t;
+ 
