@@ -4,6 +4,10 @@ Date: 2026-10-14 (Asia/Shanghai).
 
 Both Phase 1 prototype development images built and passed executable integration probes in fresh containers. These are local results, not official ACT certification or an agreed final acceptance standard.
 
+The separate [Ubuntu 24.04 ACT4 integration on 2026-10-24](validation/act4-2404-20261024.md) passed 51 upstream RV64 I-suite test ELFs. It is the first Phase 2 experiment; the Phase 1 results below remain unchanged.
+
+The subsequent [automated ACT4 image build and offline verification](validation/act4-auto-2404-20261024.md) also passed 51/51 tests and the expected-failure control in a fresh container. Build and verification commands are in [ACT4.md](ACT4.md).
+
 A later [public-checkout revalidation on 2026-10-16](validation/public-recheck-20261016.md) records a full original Ubuntu 24.04 rebuild and a staged Ubuntu 26.04 rebuild sharing the verified compiler. It also documents the local legacy Docker cache misses and the direct-script checks that were intentionally interrupted. The original results below remain the 2026-10-14 record.
 
 This report is intended for users and reviewers to understand what was tested and the limits of those results. Build instructions are in [README.md](README.md); the logs under `validation/` record the run reported here.

@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: MIT
+ARG PHASE1_IMAGE=riscv-dev:ubuntu-24.04
+FROM ${PHASE1_IMAGE}
+USER root
+ARG BUILD_JOBS=2
+RUN test "$(. /etc/os-release; echo "$VERSION_ID")" = 24.04 \
+    && test "$(uname -m)" = x86_64 \
+    && test "$(riscv64-unknown-elf-gcc -dumpfullversion)" = 16.2.0 \
+    && apt-get update && apt-get install -y --no-install-recommends \
+       curl unzip bzip2 libyaml-0-2 libgmp10 libssl3t64 pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+COPY act4.lock.json /usr/share/riscv-dev-env/act4.lock.json
+COPY archives/ /tmp/act4-archives/
+COPY tools/install_act4_system.py /tmp/install_act4_system.py
+RUN BUILD_JOBS="$BUILD_JOBS" python3 /tmp/install_act4_system.py \
+    && rm -rf /tmp/act4-archives /tmp/install_act4_system.py \
+    && mkdir -p /act4 /artifacts \
+    && chown -R riscv:riscv /act4 /artifacts /home/riscv/.local
+COPY scripts/install-act4-user.sh /usr/local/bin/install-act4-user
+RUN chmod 755 /usr/local/bin/install-act4-user
+USER riscv
+ENV HOME=/home/riscv MISE_YES=1 UV_LINK_MODE=copy UV_PYTHON=3.14.8
+ENV PATH=/home/riscv/.local/bin:/opt/spike-act4/bin:/opt/sail/bin:$PATH
+WORKDIR /act4
+RUN git init . \
+    && git remote add origin "$(python3 -c 'import json; print(json.load(open("/usr/share/riscv-dev-env/act4.lock.json"))["act4"]["repository"])')" \
+    && git fetch --depth 1 origin "$(python3 -c 'import json; print(json.load(open("/usr/share/riscv-dev-env/act4.lock.json"))["act4"]["commit"])')" \
+    && git checkout --detach FETCH_HEAD \
+    && install-act4-user
+USER root
+COPY scripts/run-act4-probe.sh /usr/local/bin/riscv-act4-probe
+COPY scripts/validate-act4.sh /usr/local/bin/riscv-act4-validate
+RUN chmod 755 /usr/local/bin/riscv-act4-* \
+    && dpkg-query -W > /usr/share/riscv-dev-env/act4-ubuntu-packages.txt
+USER riscv
+LABEL org.opencontainers.image.title="RISC-V ACT4 integration prototype" \
+      org.opencontainers.image.source="https://github.com/Gahao123/riscv-dev-env" \
+      org.opencontainers.image.description="Ubuntu 24.04, Phase 1 GCC, pinned ACT4/Sail/Spike; RV64 I probe"
+CMD ["riscv-act4-probe"]

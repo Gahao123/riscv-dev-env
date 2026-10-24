@@ -1,0 +1,10 @@
+✓ DUT configs prepared: 1 config all up to date
+Selected test list: /act4/work/spike-RVI20U64/test_list.md
+✓ Build complete: 204 up-to-date
+
+══════ spike-RVI20U64 ══════
+  Running ELFs from: /act4/work/spike-RVI20U64/elfs
+  Using command: spike --instructions=100000000 --isa=rv64imafdc_zicclsm_zicsr_zifencei_zicntr_zca_zcd_zaamo_zalrsc <elf_path>
+  Overall summary available at: /act4/work/spike-RVI20U64/summary.log
+
+  RESULT: All 51 tests passed.

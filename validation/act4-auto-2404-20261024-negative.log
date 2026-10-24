@@ -1,0 +1,10 @@
+
+══════ negative.knTD6mnf ══════
+  Running ELFs from: /artifacts/negative.knTD6mnf/elfs
+  Using command: spike --instructions=1 --isa=rv64imafdc_zicclsm_zicsr_zifencei_zicntr_zca_zcd_zaamo_zalrsc <elf_path>
+  Overall summary available at: /artifacts/negative.knTD6mnf/summary.log
+  FAIL  I-add-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/negative.knTD6mnf/logs/I-add-00.log
+
+  RESULT: 1 failed, 0 passed out of 1 tests.

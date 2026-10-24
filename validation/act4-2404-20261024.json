@@ -1,0 +1,55 @@
+{
+  "completed_utc": "2026-10-24T14:53:58.849625+00:00",
+  "baseline": "Ubuntu 24.04, linux/amd64",
+  "container": "riscv-act4-probe-2404-20261024",
+  "phase1_base_image_id": "sha256:b70edf2c2f8425fa45f7e2b438b4d5a3346e7b84b5c0b6937d3460ecdbdfc7db",
+  "act4_commit": "6da7a898d508fee6f741777840c05e71df561f0c",
+  "upstream_tracked_changes": [],
+  "configuration": "config/spike/spike-RVI20U64/test_config.yaml",
+  "selected_extensions": "I",
+  "spike_commit": "2c300cd90eb74bb79f3fcdd58596a6f8d842d01c",
+  "spike_prefix": "/opt/spike-act4",
+  "sail_version": "0.16",
+  "gcc_version": "16.2.0",
+  "testing_uid": "1001",
+  "build_dag_tasks": 204,
+  "runs": {
+    "online": {
+      "test_elf_count": 51,
+      "pass_count": 51,
+      "summary": "act4-2404-20261024-online-summary.log"
+    },
+    "offline_fresh_build": {
+      "test_elf_count": 51,
+      "pass_count": 51,
+      "summary": "act4-2404-20261024-offline_fresh_build-summary.log"
+    }
+  },
+  "main_runner_exit_code": 0,
+  "offline_fresh_build_exit_code": 0,
+  "negative_control_exit_code": 1,
+  "negative_control": "one upstream ELF, one simulated instruction budget; upstream runner rejects missing success summary despite simulator exit 0",
+  "phase1_smoke": "passed after ACT4 integration, offline preserved original image",
+  "phase1_preserved_images": [
+    {
+      "original_tag": "riscv-dev:ubuntu-24.04",
+      "preserved_tag": "riscv-dev:phase1-ubuntu-24.04-20261024",
+      "image_id": "sha256:53285d8e39d5d7860de9d9cdb4dbc61f9e5b674b73f9fe7c9650d7a57cc711b3"
+    },
+    {
+      "original_tag": "riscv-dev-publiccheck:ubuntu-24.04",
+      "preserved_tag": "riscv-dev-publiccheck:phase1-ubuntu-24.04-20261024",
+      "image_id": "sha256:b70edf2c2f8425fa45f7e2b438b4d5a3346e7b84b5c0b6937d3460ecdbdfc7db"
+    }
+  ],
+  "resource_limits": {
+    "cpus": 2,
+    "memory_limit_bytes": 4294967296,
+    "cgroup": {
+      "memory.max": "4294967296",
+      "memory.peak": "4294967296",
+      "memory.events": "low 0\nhigh 0\nmax 44789\noom 0\noom_kill 0\noom_group_kill 0"
+    }
+  },
+  "scope": "RV64 I suite only; not the entire RVI20U64 profile, a completed Phase 2 image matrix, or certification"
+}

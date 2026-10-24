@@ -1,0 +1,28 @@
+   Building act @ file:///act4/framework
+   Building covergroupgen @ file:///act4/generators/coverage
+   Building testgen @ file:///act4/generators/testgen
+      Built covergroupgen @ file:///act4/generators/coverage
+      Built testgen @ file:///act4/generators/testgen
+      Built act @ file:///act4/framework
+Uninstalled 3 packages in 2ms
+Installed 3 packages in 2ms
+
+✓ Generated covergroups for 1 extension(s)
+
+✓ Generated 4 test suite(s)
+   Building covergroupgen @ file:///act4/generators/coverage
+   Building testgen @ file:///act4/generators/testgen
+      Built covergroupgen @ file:///act4/generators/coverage
+      Built testgen @ file:///act4/generators/testgen
+Uninstalled 2 packages in 0.76ms
+Installed 2 packages in 2ms
+✓ DUT configs prepared: 1 config in 24.9s
+Selected test list: /artifacts/work/spike-RVI20U64/test_list.md
+✓ Build complete: 204 succeeded
+
+══════ spike-RVI20U64 ══════
+  Running ELFs from: /artifacts/work/spike-RVI20U64/elfs
+  Using command: spike --instructions=100000000 --isa=rv64imafdc_zicclsm_zicsr_zifencei_zicntr_zca_zcd_zaamo_zalrsc <elf_path>
+  Overall summary available at: /artifacts/work/spike-RVI20U64/summary.log
+
+  RESULT: All 51 tests passed.

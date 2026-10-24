@@ -13,6 +13,8 @@ Prototype for [RISC-V DevPartners #47](https://github.com/riscv-admin/dev-partne
 
 This first prototype addresses the development container. CI-minimal images, locked certification environments, VM images, ACT4 integration, and real-board support are subsequent work. The smoke probe is not an architectural certification test.
 
+The Ubuntu 24.04 ACT4 environment recipe and automated offline verification are documented in [ACT4.md](ACT4.md). After building the Phase 1 Ubuntu 24.04 image, run `bash scripts/build-act4.sh` and `bash scripts/check-act4.sh`. This is an initial step toward the Phase 2 image matrix, separate from the Phase 1 smoke probe.
+
 ## Why these versions
 
 [Ubuntu 26.04 is an LTS release](https://ubuntu.com/about/release-cycle). [Spike's latest official release](https://github.com/riscv-software-src/riscv-isa-sim/releases/latest) is still v1.1.0 (2021); the newer master branch must not be described as the latest release tag. [GCC 16.2](https://gcc.gnu.org/releases.html) is the newest stable branch release as checked on 2026-10-14.

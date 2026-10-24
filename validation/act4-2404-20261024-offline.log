@@ -1,0 +1,14 @@
+
+✓ Generated covergroups for 1 extension(s)
+
+✓ Generated 4 test suite(s)
+✓ DUT configs prepared: 1 config in 10.4s
+Selected test list: /act4/work-offline/spike-RVI20U64/test_list.md
+✓ Build complete: 204 succeeded
+
+══════ spike-RVI20U64 ══════
+  Running ELFs from: /act4/work-offline/spike-RVI20U64/elfs
+  Using command: spike --instructions=100000000 --isa=rv64imafdc_zicclsm_zicsr_zifencei_zicntr_zca_zcd_zaamo_zalrsc <elf_path>
+  Overall summary available at: /act4/work-offline/spike-RVI20U64/summary.log
+
+  RESULT: All 51 tests passed.

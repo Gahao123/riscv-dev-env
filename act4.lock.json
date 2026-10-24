@@ -1,0 +1,45 @@
+{
+  "checked_on": "2026-10-24",
+  "status": "Ubuntu 24.04 ACT4 integration prototype",
+  "act4": {
+    "repository": "https://github.com/riscv/riscv-arch-test.git",
+    "commit": "6da7a898d508fee6f741777840c05e71df561f0c",
+    "config": "config/spike/spike-RVI20U64/test_config.yaml",
+    "extensions": "I",
+    "expected_tests": 51
+  },
+  "spike": {
+    "commit": "2c300cd90eb74bb79f3fcdd58596a6f8d842d01c",
+    "url": "https://codeload.github.com/riscv/riscv-isa-sim/tar.gz/2c300cd90eb74bb79f3fcdd58596a6f8d842d01c",
+    "sha256": "1bc28242cfd4664f92a70fcc38c0b64cc80390b20f80f0bd4c457a3e9655f4af",
+    "install_prefix": "/opt/spike-act4",
+    "selection": "Same commit as the pinned ACT4 .github/scripts/install-spike.sh; separate from Phase 1 v1.1.0"
+  },
+  "softfloat": {
+    "commit": "32eb3295a3c814c1551f94ebc29eed1dec3cb3b1",
+    "url": "https://codeload.github.com/ucb-bar/berkeley-softfloat-3/tar.gz/32eb3295a3c814c1551f94ebc29eed1dec3cb3b1",
+    "sha256": "759da72cf85104c6f9176c18ced89b8e7d6d578c57f8a308659145ae0a44c8be"
+  },
+  "sail": {
+    "version": "0.16",
+    "url": "https://github.com/riscv/sail-riscv/releases/download/0.16/sail-riscv-Linux-x86_64.tar.gz",
+    "sha256": "f9bb8a32b8f3eddbdf69b3a29d96dff4ba1e77f45877165e0478418367da6bee",
+    "install_prefix": "/opt/sail"
+  },
+  "mise": {
+    "version": "2026.10.18",
+    "url": "https://github.com/jdx/mise/releases/download/v2026.10.18/mise-v2026.10.18-linux-x64.tar.gz",
+    "sha256": "0d41b60745a6273a80089c86f80d8729042d2f57f87fda70aecc7d1c3ffbd3be"
+  },
+  "environment": {
+    "host_platform": "linux/amd64",
+    "runtime_baseline": "Ubuntu 24.04",
+    "gcc": "Phase 1 GCC 16.2.0/Newlib under /opt/riscv",
+    "mise": "2026.10.18",
+    "ruby": "3.4.11",
+    "bundler": "4.0.23",
+    "uv": "0.13.4",
+    "python": "3.14.8",
+    "dependency_locks": ["ACT4 uv.lock", "ACT4 framework/src/act/data/Gemfile.lock"]
+  }
+}
