@@ -1,6 +1,6 @@
 {
-  "checked_on": "2026-10-24",
-  "status": "Ubuntu 24.04 ACT4 integration prototype",
+  "checked_on": "2026-10-25",
+  "status": "Ubuntu LTS ACT4 integration prototype",
   "act4": {
     "repository": "https://github.com/riscv/riscv-arch-test.git",
     "commit": "6da7a898d508fee6f741777840c05e71df561f0c",
@@ -33,7 +33,7 @@
   },
   "environment": {
     "host_platform": "linux/amd64",
-    "runtime_baseline": "Ubuntu 24.04",
+    "runtime_baselines": ["Ubuntu 24.04", "Ubuntu 26.04"],
     "gcc": "Phase 1 GCC 16.2.0/Newlib under /opt/riscv",
     "mise": "2026.10.18",
     "ruby": "3.4.11",

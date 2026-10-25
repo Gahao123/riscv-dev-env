@@ -1,0 +1,61 @@
+{
+  "completed_at_utc": "2026-10-25T03:44:19.644863+00:00",
+  "uid": 1001,
+  "ubuntu_version": "26.04",
+  "host_architecture": "x86_64",
+  "act4_commit": "6da7a898d508fee6f741777840c05e71df561f0c",
+  "config": "config/spike/spike-RVI20U64/test_config.yaml",
+  "extensions": "I",
+  "tests_passed": 51,
+  "negative_control_exit": 1,
+  "tracked_upstream_source_clean": true,
+  "versions": {
+    "gcc": "16.2.0",
+    "sail": "0.16",
+    "mise": "2026.10.18 linux-x64 (2026-10-23)",
+    "ruby": "ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]",
+    "bundler": "4.0.23",
+    "uv": "uv 0.13.4 (x86_64-unknown-linux-gnu)",
+    "python": "3.14.8"
+  },
+  "image": "riscv-act4:ubuntu-26.04",
+  "image_id": "sha256:6a300d0c574954cd267bcfbbf347cc65cada5fad42aa79b916bdf40d06cf1acf",
+  "phase1_base": "riscv-dev:ubuntu-26.04",
+  "phase1_base_id": "sha256:19c6533d2f2bd4587f77e0939f57d57aab850d3c6ec1ebe83ae977438a046b7f",
+  "environment_built_from_recipe": true,
+  "runtime_network": "none",
+  "fresh_test_output_directory": true,
+  "build_jobs": 2,
+  "validation_cpu_equivalents": 2,
+  "validation_memory_limit_bytes": 4294967296,
+  "validation_memory_plus_swap_limit_bytes": 6442450944,
+  "gcc_rebuilt": false,
+  "compiler_binary_sha256": {
+    "riscv-dev:ubuntu-26.04": "fed5890fb648b9f3bf7b6abfe441e41da406c60b558842bda4e229e2ceaa1556",
+    "riscv-act4:ubuntu-26.04": "fed5890fb648b9f3bf7b6abfe441e41da406c60b558842bda4e229e2ceaa1556"
+  },
+  "phase1_26_smoke_passed": true,
+  "argument_guards": {
+    "unsupported_version_exit": 2,
+    "mismatched_image_exit": 1
+  },
+  "ubuntu_24_regression": {
+    "image_id": "sha256:16cd31c8b0498fec89dc69b7ed13fc488e7e6a3ac4507cc9e6e618d05285bd47",
+    "tests_passed": 51,
+    "negative_control_exit": 1,
+    "fresh_test_outputs": true,
+    "new_image_built": false
+  },
+  "recipe_sha256": {
+    "Dockerfile.act4": "2cc86ceb06447951e166413981c375de7e7acb7249af78fe046801d48a869e7d",
+    "act4.lock.json": "be8e837e37b03fa192b7b14f6ca7a208669f8a1e7a4664f84b939f0e02fea93a",
+    "tools/fetch_act4_sources.py": "26bb5b6a18ee57d95d03c792709e0dc14dd84f7ad7b6e5ff8dab7f73c87a821d",
+    "tools/install_act4_system.py": "9231795d3fd1a1657506331a153c64fa09a4c5814b4750bfb4d80ea551babee0",
+    "scripts/build-act4.sh": "b39f95c8aef6f0fa460d75eba2dc25417a1c7151c1bec37acce063a5bf956695",
+    "scripts/check-act4.sh": "0d0f685b60ab2e9c0d19f8585b77df9749eb398b3bc9c0020ed86cd050fc3a64",
+    "scripts/install-act4-user.sh": "b55158a8262b6cb68241ba76445bec4868117a2df8a484fcad45d42a4dc243a5",
+    "scripts/run-act4-probe.sh": "8afbe1c24080f941a10d2e984c05444484920ac6044127d45d838c5682a47211",
+    "scripts/validate-act4.sh": "fce802b300e42583c35736510eba204a5b241f136f8053792b2ae4ce9f1572e1"
+  },
+  "scope": "Ubuntu 26.04/linux-amd64, RV64 I suite on Spike; not complete-profile certification or dev/CI/cert variants"
+}

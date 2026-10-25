@@ -1,14 +1,15 @@
-# Automated ACT4 integration on Ubuntu 24.04
+# Automated ACT4 integration on Ubuntu LTS
 
 This Phase 2 integration prototype reuses the Phase 1 GCC
 16.2.0/Newlib installation and builds self-checking tests from a pinned ACT4
-checkout. The dev/CI/cert image matrix and Ubuntu 26.04 integration are subsequent
+checkout on Ubuntu 24.04 and 26.04. Separate dev/CI/cert images remain subsequent
 work.
 
 The [automated-image validation record](validation/act4-auto-2404-20261024.md)
 reports 51 passing test ELFs and an expected-failure control in a fresh offline
-container. The earlier [manual integration record](validation/act4-2404-20261024.md)
-is retained separately.
+container. The [Ubuntu 26.04 validation record](validation/act4-auto-2604-20261025.md)
+covers the same pinned suite on the second baseline. The earlier
+[manual integration record](validation/act4-2404-20261024.md) is retained separately.
 
 ## Pinned inputs
 
@@ -39,17 +40,22 @@ pinned development commit, not a newer official release tag.
 
 ## Run the integration probe
 
-Start with the Phase 1 `riscv-dev:ubuntu-24.04` image built by
-`bash scripts/build.sh 24.04`, Python 3.11+, and Docker on an x86_64 Linux/WSL host.
-From this repository's root:
+Start with the matching Phase 1 `riscv-dev:ubuntu-<version>` image, built by
+`bash scripts/build.sh <version>`, Python 3.11+, and Docker on an x86_64 Linux/WSL
+host. From this repository's root, choose one baseline and run sequentially:
 
 ```bash
-bash scripts/build-act4.sh
-bash scripts/check-act4.sh
+bash scripts/build-act4.sh 24.04
+bash scripts/check-act4.sh 24.04
+
+# Or use the Ubuntu 26.04 Phase 1 image:
+bash scripts/build-act4.sh 26.04
+bash scripts/check-act4.sh 26.04
 ```
 
 The first command verifies the locked Spike, SoftFloat, Sail, and mise archives,
-then builds `riscv-act4:ubuntu-24.04` using `Dockerfile.act4`. It fetches the exact
+then builds `riscv-act4:ubuntu-<version>` using `Dockerfile.act4`. Both scripts
+default to 24.04 when the version argument is omitted. The recipe fetches the exact
 ACT4 Git commit and installs the upstream Ruby/Python dependencies. GCC is reused
 from Phase 1. The Spike source/object directory is removed in its build layer.
 Downloads need network access; Ubuntu packages are recorded in the image but
@@ -59,14 +65,16 @@ The second command starts a fresh container with **networking disabled**, two
 CPU equivalents, a 4 GiB memory limit and a 6 GiB combined memory/swap limit.
 It builds/runs the suite as `riscv` (UID 1001), then checks that a deliberately
 incomplete run is rejected. Results, per-test summaries and logs go under
-`logs/act4-<UTC timestamp>/`. Output ownership is returned to the calling host
+`logs/act4-<version>-<UTC timestamp>/`. Output ownership is returned to the calling host
 user. `ACT4_OUTPUT=/absolute/path` chooses a different output directory. Use an
 empty directory for evidence of a fresh test build. These limits apply to the
 validation container; Docker build resource limits depend on the host builder.
 
 `PHASE1_IMAGE`, `ACT4_IMAGE`, and `BUILD_JOBS` override the base tag, resulting
-image tag, and compilation parallelism (default 2). Only Ubuntu 24.04/linux-amd64
-is supported by this recipe so far. Build scripts preserve the Phase 1 tags.
+image tag, and compilation parallelism (default 2). The custom image must match
+the selected Ubuntu version. Only Ubuntu 24.04 and 26.04 on linux/amd64 are
+supported so far. Build and validation both check the actual OS version. Build
+scripts preserve the Phase 1 tags and give the ACT4 images separate version tags.
 
 Standard `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` variables are forwarded as
 Docker's predefined build arguments. If a proxy on host loopback cannot be
@@ -78,6 +86,7 @@ For an interactive shell:
 
 ```bash
 docker run --rm -it riscv-act4:ubuntu-24.04 bash
+# Choose riscv-act4:ubuntu-26.04 for the other baseline.
 # Inside the container:
 riscv-act4-probe
 ```
@@ -116,8 +125,8 @@ list are under `$ACT4_WORKDIR/spike-RVI20U64/`.
 
 The selected `I` suite exercises the initial integration path. It does not
 establish that all extensions in the RVI20U64 configuration have passed, complete
-an architectural certification, or validate a physical processor. Ubuntu 26.04,
-separate dev/CI/cert images, and the full Phase 2 matrix remain subsequent work.
+an architectural certification, or validate a physical processor. Separate
+dev/CI/cert images and the full Phase 2 matrix remain subsequent work.
 
 ACT4 and its test sources retain their upstream licenses and authorship. This
 repository supplies the environment integration and runner; it does not claim

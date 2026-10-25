@@ -63,6 +63,8 @@ assert versions['mise'].startswith(lock['mise']['version'] + ' ')
 result = {
     'completed_at_utc': datetime.now(timezone.utc).isoformat(),
     'uid': os.getuid(),
+    'ubuntu_version': platform.freedesktop_os_release()['VERSION_ID'],
+    'host_architecture': platform.machine(),
     'act4_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
     'config': lock['act4']['config'],
     'extensions': lock['act4']['extensions'],

@@ -3,7 +3,9 @@ ARG PHASE1_IMAGE=riscv-dev:ubuntu-24.04
 FROM ${PHASE1_IMAGE}
 USER root
 ARG BUILD_JOBS=2
-RUN test "$(. /etc/os-release; echo "$VERSION_ID")" = 24.04 \
+ARG UBUNTU_VERSION=24.04
+RUN case "$UBUNTU_VERSION" in 24.04|26.04) ;; *) exit 2 ;; esac \
+    && test "$(. /etc/os-release; echo "$VERSION_ID")" = "$UBUNTU_VERSION" \
     && test "$(uname -m)" = x86_64 \
     && test "$(riscv64-unknown-elf-gcc -dumpfullversion)" = 16.2.0 \
     && apt-get update && apt-get install -y --no-install-recommends \
@@ -35,5 +37,6 @@ RUN chmod 755 /usr/local/bin/riscv-act4-* \
 USER riscv
 LABEL org.opencontainers.image.title="RISC-V ACT4 integration prototype" \
       org.opencontainers.image.source="https://github.com/Gahao123/riscv-dev-env" \
-      org.opencontainers.image.description="Ubuntu 24.04, Phase 1 GCC, pinned ACT4/Sail/Spike; RV64 I probe"
+      org.opencontainers.image.version="ubuntu-${UBUNTU_VERSION}" \
+      org.opencontainers.image.description="Ubuntu ${UBUNTU_VERSION}, Phase 1 GCC, pinned ACT4/Sail/Spike; RV64 I probe"
 CMD ["riscv-act4-probe"]

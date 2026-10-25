@@ -8,6 +8,8 @@ The separate [Ubuntu 24.04 ACT4 integration on 2026-10-24](validation/act4-2404-
 
 The subsequent [automated ACT4 image build and offline verification](validation/act4-auto-2404-20261024.md) also passed 51/51 tests and the expected-failure control in a fresh container. Build and verification commands are in [ACT4.md](ACT4.md).
 
+The [Ubuntu 26.04 integration on 2026-10-25](validation/act4-auto-2604-20261025.md) extends the same recipe and pinned suite to the second baseline. It records the 26.04 offline results, version-selection guards, and a sequential regression using the retained Ubuntu 24.04 ACT4 image.
+
 A later [public-checkout revalidation on 2026-10-16](validation/public-recheck-20261016.md) records a full original Ubuntu 24.04 rebuild and a staged Ubuntu 26.04 rebuild sharing the verified compiler. It also documents the local legacy Docker cache misses and the direct-script checks that were intentionally interrupted. The original results below remain the 2026-10-14 record.
 
 This report is intended for users and reviewers to understand what was tested and the limits of those results. Build instructions are in [README.md](README.md); the logs under `validation/` record the run reported here.
