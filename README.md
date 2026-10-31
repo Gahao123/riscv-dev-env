@@ -15,7 +15,7 @@ Phase 1 provides the development container and smoke probes. Phase 2 adds ACT4 i
 
 The Ubuntu 24.04 and 26.04 ACT4 environment recipe and automated offline verification are documented in [ACT4.md](ACT4.md). After building the matching Phase 1 image, run `bash scripts/build-act4.sh 24.04` and `bash scripts/check-act4.sh 24.04`, or select `26.04` in both commands. This is an initial step toward the Phase 2 image matrix, separate from the Phase 1 smoke probe.
 
-The first **Ubuntu 24.04 dev/ci/cert matrix** is documented in [PROFILES.md](PROFILES.md). Build with `bash scripts/build-profiles.sh all`; verify with `bash scripts/check-profile.sh ci` or `dev`. The cert prototype requires external signing and verification keys. Its project-specific artifact signatures are not official ACT certification. Results and scope are recorded in [the profile validation report](validation/profiles-2404-20261031.md).
+The **Ubuntu 24.04 and 26.04 dev/ci/cert matrix** is documented in [PROFILES.md](PROFILES.md). For example, build with `bash scripts/build-profiles.sh 26.04 all`; verify with `bash scripts/check-profile.sh 26.04 ci` or `26.04 dev`. Omitting the version keeps the original 24.04 command syntax. The cert prototype requires external signing and verification keys; its project-specific signatures are not official ACT certification. Results and scope are recorded for [24.04](validation/profiles-2404-20261031.md) and [26.04](validation/profiles-2604-20261031.md).
 
 ## Why these versions
 

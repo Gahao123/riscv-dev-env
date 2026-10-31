@@ -1,0 +1,2 @@
+Ubuntu mismatch: expected 26.04, got 24.04
+Exit status: 1 (expected 1 for Ubuntu 24.04 image requested as 26.04)

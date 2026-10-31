@@ -2,8 +2,8 @@
 
 This Phase 2 integration prototype reuses the Phase 1 GCC
 16.2.0/Newlib installation and builds self-checking tests from a pinned ACT4
-checkout on Ubuntu 24.04 and 26.04. Separate dev/CI/cert images remain subsequent
-work.
+checkout on Ubuntu 24.04 and 26.04. The separate [dev/CI/cert role images](PROFILES.md)
+build on these integration images.
 
 The [automated-image validation record](validation/act4-auto-2404-20261024.md)
 reports 51 passing test ELFs and an expected-failure control in a fresh offline
@@ -126,9 +126,9 @@ list are under `$ACT4_WORKDIR/spike-RVI20U64/`.
 The selected `I` suite exercises the initial integration path. It does not
 establish that all extensions in the RVI20U64 configuration have passed, complete
 an architectural certification, or validate a physical processor. The first
-[Ubuntu 24.04 dev/CI/cert prototypes](PROFILES.md) build on this integration seed;
-Ubuntu 26.04 role variants, VM images, and the full Phase 2 matrix remain
-subsequent work.
+[Ubuntu 24.04 and 26.04 dev/CI/cert prototypes](PROFILES.md) build on the matching
+integration seeds. VM images, broader test coverage, and upstream-approved
+certification/signing policy remain subsequent work.
 
 ACT4 and its test sources retain their upstream licenses and authorship. This
 repository supplies the environment integration and runner; it does not claim

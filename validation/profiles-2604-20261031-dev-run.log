@@ -1,0 +1,26 @@
+
+✓ Generated covergroups for 1 extension(s)
+
+✓ Generated 4 test suite(s)
+✓ DUT configs prepared: 1 config in 22.8s
+Selected test list: /artifacts/work/spike-RVI20U64/test_list.md
+✓ Build complete: 204 succeeded
+
+══════ spike-RVI20U64 ══════
+  Running ELFs from: /artifacts/work/spike-RVI20U64/elfs
+  Using command: spike --instructions=100000000 --isa=rv64imafdc_zicclsm_zicsr_zifencei_zicntr_zca_zcd_zaamo_zalrsc <elf_path>
+  Overall summary available at: /artifacts/work/spike-RVI20U64/summary.log
+
+  RESULT: All 51 tests passed.
+
+══════ negative ══════
+  Running ELFs from: /artifacts/negative/elfs
+  Using command: spike --instructions=1 --isa=rv64imafdc_zicclsm_zicsr_zifencei_zicntr_zca_zcd_zaamo_zalrsc <elf_path>
+  Overall summary available at: /artifacts/negative/summary.log
+  FAIL  I-add-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/negative/logs/I-add-00.log
+
+  RESULT: 1 failed, 0 passed out of 1 tests.
+ACT4 dev verification passed: 51 tests; results: /artifacts
+Saved dev results: /root/codex-riscv-profiles-2604-20261031/dev-verified/results.json

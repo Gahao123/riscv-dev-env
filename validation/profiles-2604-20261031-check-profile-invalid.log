@@ -1,0 +1,2 @@
+Usage: bash scripts/check-profile.sh [24.04|26.04] [dev|ci|cert]
+Exit status: 2 (expected 2 for unsupported 25.10)

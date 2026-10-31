@@ -1,0 +1,21 @@
+{
+  "completed_at_utc": "2026-10-31T04:56:02.874104+00:00",
+  "profile": "ci",
+  "ubuntu_version": "24.04",
+  "uid": 1001,
+  "act4_revision": "6da7a898d508fee6f741777840c05e71df561f0c",
+  "source_supplied": false,
+  "source_dirty_before_build": false,
+  "selected_extensions": "I",
+  "tests_passed": 51,
+  "negative_control_exit": 1,
+  "gcc": "16.2.0",
+  "sail": "0.16",
+  "python": "3.14.8",
+  "ruby": "ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]",
+  "bundler": "4.0.23",
+  "sealed_inputs_verified": false,
+  "runtime_manifest_sha256": "a9cad450462852a78df22f7d86d42f1ea0e0bd35193406cd7a070d33f40fc899",
+  "act4_lock_sha256": "be8e837e37b03fa192b7b14f6ca7a208669f8a1e7a4664f84b939f0e02fea93a",
+  "scope": "RV64 I integration probe on Spike; no official certification claim"
+}

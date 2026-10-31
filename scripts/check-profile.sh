@@ -2,16 +2,19 @@
 # SPDX-License-Identifier: MIT
 set -euo pipefail
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+version=24.04
+if [[ "${1:-}" =~ ^(24\.04|26\.04)$ ]]; then version=$1; shift; fi
 role=${1:-ci}
-[[ $# -le 1 && "$role" =~ ^(dev|ci|cert)$ ]] || { echo 'Usage: bash scripts/check-profile.sh [dev|ci|cert]' >&2; exit 2; }
-image=${ACT4_PROFILE_IMAGE:-riscv-act4:ubuntu-24.04-$role}
-output=${ACT4_OUTPUT:-$root/logs/profile-$role-$(date -u +%Y%m%dT%H%M%SZ)}
+[[ $# -le 1 && "$role" =~ ^(dev|ci|cert)$ ]] || { echo 'Usage: bash scripts/check-profile.sh [24.04|26.04] [dev|ci|cert]' >&2; exit 2; }
+image=${ACT4_PROFILE_IMAGE:-riscv-act4:ubuntu-$version-$role}
+output=${ACT4_OUTPUT:-$root/logs/profile-$version-$role-$(date -u +%Y%m%dT%H%M%SZ)}
 mkdir -p "$output"
 output=$(cd -- "$output" && pwd)
 docker image inspect "$image" > "$output.image.json"
 args=(--rm --network none --cpus 2 --memory 4g --memory-swap 6g --pids-limit 512
       --user root --entrypoint bash --env "OUTPUT_UID=$(id -u)" --env "OUTPUT_GID=$(id -g)"
       --env "EXPECTED_PROFILE=$role"
+      --env "EXPECTED_UBUNTU_VERSION=$version"
       --mount "type=bind,src=$output,dst=/artifacts")
 run_args=()
 if [[ -n "${ACT4_SOURCE:-}" ]]; then
@@ -38,7 +41,8 @@ docker run "${args[@]}" "$image" -c '
     trap '\''chown -R "$OUTPUT_UID:$OUTPUT_GID" /artifacts'\'' EXIT
     actual_profile=$(cat /etc/riscv-act4-profile)
     test "$actual_profile" = "$EXPECTED_PROFILE" || { echo "Profile mismatch: expected $EXPECTED_PROFILE, got $actual_profile" >&2; exit 1; }
-    test "$(. /etc/os-release; echo "$VERSION_ID")" = 24.04
+    actual_version=$(. /etc/os-release; echo "$VERSION_ID")
+    test "$actual_version" = "$EXPECTED_UBUNTU_VERSION" || { echo "Ubuntu mismatch: expected $EXPECTED_UBUNTU_VERSION, got $actual_version" >&2; exit 1; }
     chown riscv:riscv /artifacts
     if [[ -f /inputs/private.pem ]]; then
         install -o riscv -g riscv -m 400 /inputs/private.pem /run/keys/private.pem

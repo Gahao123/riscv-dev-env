@@ -1,0 +1,167 @@
+
+✓ Generated covergroups for 1 extension(s)
+
+✓ Generated 4 test suite(s)
+✓ DUT configs prepared: 1 config in 23.4s
+Selected test list: /artifacts/work/spike-RVI20U64/test_list.md
+✓ Build complete: 204 succeeded
+
+══════ spike-RVI20U64 ══════
+  Running ELFs from: /artifacts/work/spike-RVI20U64/elfs
+  Using command: spike --instructions=1 --isa=rv64imafdc_zicclsm_zicsr_zifencei_zicntr_zca_zcd_zaamo_zalrsc <elf_path>
+  Overall summary available at: /artifacts/work/spike-RVI20U64/summary.log
+  FAIL  I-add-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-add-00.log
+  FAIL  I-addi-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-addi-00.log
+  FAIL  I-addiw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-addiw-00.log
+  FAIL  I-addw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-addw-00.log
+  FAIL  I-and-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-and-00.log
+  FAIL  I-andi-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-andi-00.log
+  FAIL  I-auipc-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-auipc-00.log
+  FAIL  I-beq-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-beq-00.log
+  FAIL  I-bge-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-bge-00.log
+  FAIL  I-bgeu-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-bgeu-00.log
+  FAIL  I-blt-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-blt-00.log
+  FAIL  I-bltu-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-bltu-00.log
+  FAIL  I-bne-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-bne-00.log
+  FAIL  I-jal-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-jal-00.log
+  FAIL  I-fence-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-fence-00.log
+  FAIL  I-jalr-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-jalr-00.log
+  FAIL  I-lb-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-lb-00.log
+  FAIL  I-lbu-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-lbu-00.log
+  FAIL  I-ld-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-ld-00.log
+  FAIL  I-lh-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-lh-00.log
+  FAIL  I-lhu-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-lhu-00.log
+  FAIL  I-lui-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-lui-00.log
+  FAIL  I-lw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-lw-00.log
+  FAIL  I-lwu-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-lwu-00.log
+  FAIL  I-nop-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-nop-00.log
+  FAIL  I-or-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-or-00.log
+  FAIL  I-ori-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-ori-00.log
+  FAIL  I-sb-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sb-00.log
+  FAIL  I-sd-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sd-00.log
+  FAIL  I-sh-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sh-00.log
+  FAIL  I-sll-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sll-00.log
+  FAIL  I-slli-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-slli-00.log
+  FAIL  I-slliw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-slliw-00.log
+  FAIL  I-sllw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sllw-00.log
+  FAIL  I-slt-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-slt-00.log
+  FAIL  I-slti-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-slti-00.log
+  FAIL  I-sltiu-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sltiu-00.log
+  FAIL  I-sltu-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sltu-00.log
+  FAIL  I-sra-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sra-00.log
+  FAIL  I-srai-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-srai-00.log
+  FAIL  I-sraiw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sraiw-00.log
+  FAIL  I-sraw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sraw-00.log
+  FAIL  I-srl-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-srl-00.log
+  FAIL  I-srli-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-srli-00.log
+  FAIL  I-srliw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-srliw-00.log
+  FAIL  I-srlw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-srlw-00.log
+  FAIL  I-sub-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sub-00.log
+  FAIL  I-subw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-subw-00.log
+  FAIL  I-sw-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-sw-00.log
+  FAIL  I-xor-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-xor-00.log
+  FAIL  I-xori-00.elf — exit code 0 but no RVCP-SUMMARY line found
+         Test may have been killed externally or hung without producing output.
+         Log: /artifacts/work/spike-RVI20U64/logs/rv64i/I/I-xori-00.log
+
+  RESULT: 51 failed, 0 passed out of 51 tests.

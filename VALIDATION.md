@@ -12,6 +12,8 @@ The [Ubuntu 26.04 integration on 2026-10-25](validation/act4-auto-2604-20261025.
 
 The [Ubuntu 24.04 dev/ci/cert matrix on 2026-10-31](validation/profiles-2404-20261031.md) records the first role-specific builds, offline 51-test runs, alternate-source CI, GDB inspection, signatures and rejection controls. These are container prototypes; official certification and VM delivery remain outside the recorded checks.
 
+The [Ubuntu 26.04 role matrix](validation/profiles-2604-20261031.md) extends those checks to the second baseline, including cross-version signature verification and a regression of the original 24.04 command syntax. Together the records cover six container-role prototypes.
+
 A later [public-checkout revalidation on 2026-10-16](validation/public-recheck-20261016.md) records a full original Ubuntu 24.04 rebuild and a staged Ubuntu 26.04 rebuild sharing the verified compiler. It also documents the local legacy Docker cache misses and the direct-script checks that were intentionally interrupted. The original results below remain the 2026-10-14 record.
 
 This report is intended for users and reviewers to understand what was tested and the limits of those results. Build instructions are in [README.md](README.md); the logs under `validation/` record the run reported here.

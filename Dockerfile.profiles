@@ -10,7 +10,10 @@ RUN mkdir -p /export/rootfs/opt/act4-cache \
 
 FROM ${RUNTIME_BASE} AS runtime
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends \
+ARG UBUNTU_VERSION=24.04
+RUN case "$UBUNTU_VERSION" in 24.04|26.04) ;; *) exit 2 ;; esac \
+    && test "$(. /etc/os-release; echo "$VERSION_ID")" = "$UBUNTU_VERSION" \
+    && apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates git make device-tree-compiler libmpc3 libmpfr6 libgmp10 \
     libstdc++6 libexpat1 libyaml-0-2 libssl3t64 libffi8 zlib1g libzstd1 openssl \
     && rm -rf /var/lib/apt/lists/* \
@@ -33,7 +36,7 @@ ENV PATH=/opt/act4-venv/bin:/opt/riscv/bin:/opt/spike-act4/bin:/opt/sail/bin:/ho
 WORKDIR /act4
 USER riscv
 LABEL org.opencontainers.image.source="https://github.com/Gahao123/riscv-dev-env" \
-    org.opencontainers.image.description="Ubuntu 24.04 ACT4 role prototype; RV64 I integration scope"
+    org.opencontainers.image.description="Ubuntu ${UBUNTU_VERSION} ACT4 role prototype; RV64 I integration scope"
 ENTRYPOINT ["riscv-act4-entry"]
 CMD ["riscv-act4-run"]
 
@@ -41,13 +44,13 @@ FROM runtime AS ci
 USER root
 RUN printf 'ci\n' > /etc/riscv-act4-profile
 USER riscv
-LABEL org.opencontainers.image.title="ACT4 CI prototype" org.opencontainers.image.version="ubuntu-24.04-ci"
+LABEL org.opencontainers.image.title="ACT4 CI prototype" org.opencontainers.image.version="ubuntu-${UBUNTU_VERSION}-ci"
 
 FROM runtime AS cert
 USER root
 RUN printf 'cert\n' > /etc/riscv-act4-profile
 USER riscv
-LABEL org.opencontainers.image.title="ACT4 fixed-input signing prototype" org.opencontainers.image.version="ubuntu-24.04-cert"
+LABEL org.opencontainers.image.title="ACT4 fixed-input signing prototype" org.opencontainers.image.version="ubuntu-${UBUNTU_VERSION}-cert"
 
 FROM runtime AS dev
 USER root
@@ -57,5 +60,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && printf 'dev\n' > /etc/riscv-act4-profile \
     && dpkg-query -W > /usr/share/riscv-dev-env/dev-packages.txt
 USER riscv
-LABEL org.opencontainers.image.title="ACT4 development prototype" org.opencontainers.image.version="ubuntu-24.04-dev"
+LABEL org.opencontainers.image.title="ACT4 development prototype" org.opencontainers.image.version="ubuntu-${UBUNTU_VERSION}-dev"
 CMD ["bash"]
