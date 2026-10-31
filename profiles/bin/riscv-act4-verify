@@ -1,0 +1,3 @@
+#!/bin/sh
+# SPDX-License-Identifier: MIT
+exec /opt/act4-venv/bin/python3 /usr/local/lib/riscv_env.py verify "$@"

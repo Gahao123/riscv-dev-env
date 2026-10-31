@@ -125,8 +125,10 @@ list are under `$ACT4_WORKDIR/spike-RVI20U64/`.
 
 The selected `I` suite exercises the initial integration path. It does not
 establish that all extensions in the RVI20U64 configuration have passed, complete
-an architectural certification, or validate a physical processor. Separate
-dev/CI/cert images and the full Phase 2 matrix remain subsequent work.
+an architectural certification, or validate a physical processor. The first
+[Ubuntu 24.04 dev/CI/cert prototypes](PROFILES.md) build on this integration seed;
+Ubuntu 26.04 role variants, VM images, and the full Phase 2 matrix remain
+subsequent work.
 
 ACT4 and its test sources retain their upstream licenses and authorship. This
 repository supplies the environment integration and runner; it does not claim

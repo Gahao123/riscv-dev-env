@@ -1,0 +1,15 @@
+The target architecture is set to "auto" (currently "riscv:rv64").
+Symbols from "/results/work/spike-RVI20U64/elfs/rv64i/I/I-add-00.elf".
+Local exec file:
+	`/results/work/spike-RVI20U64/elfs/rv64i/I/I-add-00.elf', file type elf64-littleriscv.
+	Entry point: 0x80000000
+	0x0000000080000000 - 0x0000000080000040 is .text.init
+	0x0000000080000040 - 0x0000000080009be0 is .text.rvtest
+	0x000000008000c000 - 0x000000008001c920 is .data
+	0x000000008001c920 - 0x000000008001c930 is .tohost
+	0x000000008001c930 - 0x000000008001c930 is .bss
+	0x000000008001d000 - 0x000000008001d3e0 is .text.rvmodel
+   0x80000000 <rvtest_entry_point>:	auipc	ra,0x1d
+   0x80000004 <rvtest_entry_point+4>:	mv	ra,ra
+   0x80000008 <rvtest_entry_point+8>:	nop
+   0x8000000c <rvtest_entry_point+12>:	nop

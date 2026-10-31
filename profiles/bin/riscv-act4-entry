@@ -1,0 +1,7 @@
+#!/bin/sh
+# SPDX-License-Identifier: MIT
+set -eu
+if [ "$1" = bash ] || [ "$1" = sh ]; then
+    /opt/act4-venv/bin/python3 /usr/local/lib/riscv_env.py prepare
+fi
+exec "$@"

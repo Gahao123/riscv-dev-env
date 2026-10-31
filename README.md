@@ -11,9 +11,11 @@ Prototype for [RISC-V DevPartners #47](https://github.com/riscv-admin/dev-partne
 - Toolchain default: RV64GC / LP64D, without multilib. The freestanding probe explicitly uses RV64IMAC plus Zicsr / LP64; Spike v1.1.0 includes CSR instructions in its older I model.
 - The cross-toolchain build stage always uses Ubuntu 24.04, and both runtime images consume its installed artifacts. Docker can reuse that stage when its build cache is available; without a cache hit, it will rebuild the toolchain. Spike is built separately on each runtime baseline. Both images need independent runtime verification.
 
-Phase 1 provides the development container and smoke probes. CI-minimal images, locked certification environments, VM images, and real-board support remain subsequent work. The smoke probe is not an architectural certification test.
+Phase 1 provides the development container and smoke probes. Phase 2 adds ACT4 integration and role-specific container prototypes. VM images and real-board support remain subsequent work. The smoke probe is not an architectural certification test.
 
 The Ubuntu 24.04 and 26.04 ACT4 environment recipe and automated offline verification are documented in [ACT4.md](ACT4.md). After building the matching Phase 1 image, run `bash scripts/build-act4.sh 24.04` and `bash scripts/check-act4.sh 24.04`, or select `26.04` in both commands. This is an initial step toward the Phase 2 image matrix, separate from the Phase 1 smoke probe.
+
+The first **Ubuntu 24.04 dev/ci/cert matrix** is documented in [PROFILES.md](PROFILES.md). Build with `bash scripts/build-profiles.sh all`; verify with `bash scripts/check-profile.sh ci` or `dev`. The cert prototype requires external signing and verification keys. Its project-specific artifact signatures are not official ACT certification. Results and scope are recorded in [the profile validation report](validation/profiles-2404-20261031.md).
 
 ## Why these versions
 

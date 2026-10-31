@@ -1,0 +1,16 @@
+{
+  "name": "ACT4 Ubuntu 24.04 development",
+  "image": "riscv-act4:ubuntu-24.04-dev",
+  "remoteUser": "riscv",
+  "updateRemoteUserUID": false,
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "/opt/act4-venv/bin/python3 /usr/local/lib/riscv_env.py prepare",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/act4-venv/bin/python3"
+      }
+    }
+  }
+}
