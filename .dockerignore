@@ -1,6 +1,26 @@
-.git
-logs
-__pycache__
-**/__pycache__
-*.pyc
-.cache/*.part
+# Phase 1 root context: only Dockerfile COPY inputs are sent to the builder.
+# ACT4/profile scripts assemble their own separate contexts.
+**
+!Dockerfile
+!sources.lock.json
+!.cache/
+.cache/**
+!.cache/binutils-6ce87bbc.tar.gz
+!.cache/gcc-16.2.0.tar.xz
+!.cache/newlib-8ba4275b.tar.gz
+!.cache/spike-v1.1.0.tar.gz
+!.cache/toolchain-2026.08.27.tar.gz
+!scripts/
+scripts/**
+!scripts/build-toolchain.sh
+!scripts/build-spike.sh
+!scripts/smoke-test.sh
+!patches/
+patches/**
+!patches/spike-gcc13-cstdint.patch
+!tests/
+tests/**
+!tests/link.ld
+!tests/smoke.c
+!tests/smoke.cpp
+!tests/start.S

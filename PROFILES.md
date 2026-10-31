@@ -7,6 +7,9 @@ They form a two-baseline container matrix for DevPartners #47: Ubuntu 24.04 and
 26.04, each with dev/ci/cert variants. VM images, broader ISA coverage, and
 ACT-approved certification/signing policy remain subsequent work.
 
+The [Phase 2 status](docs/phase2-status.md) summarizes the deliverables and
+remaining review items; [VALIDATION.md](VALIDATION.md) indexes all recorded runs.
+
 | Role | Default behavior | Source policy | Additional purpose |
 |---|---|---|---|
 | `dev` | Interactive Bash | Packaged checkout or developer-supplied checkout | Native build tools, editor, GDB multiarch, VS Code configuration |

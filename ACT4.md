@@ -5,6 +5,10 @@ This Phase 2 integration prototype reuses the Phase 1 GCC
 checkout on Ubuntu 24.04 and 26.04. The separate [dev/CI/cert role images](PROFILES.md)
 build on these integration images.
 
+Start with the [README build sequence](README.md#build-the-complete-environment)
+for all three image layers, or the [Phase 2 status](docs/phase2-status.md) for the
+current deliverables and review scope.
+
 The [automated-image validation record](validation/act4-auto-2404-20261024.md)
 reports 51 passing test ELFs and an expected-failure control in a fresh offline
 container. The [Ubuntu 26.04 validation record](validation/act4-auto-2604-20261025.md)

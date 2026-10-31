@@ -1,69 +1,73 @@
-# Validation results
+# Validation index
 
-Date: 2026-10-14 (Asia/Shanghai).
+Current role-matrix validation: **2026-10-31**, Linux/x86_64 Docker on WSL2.
+The [Phase 2 status](docs/phase2-status.md) summarizes deliverables and review
+scope. The [README](README.md) gives the complete build sequence, and
+[PROFILES.md](PROFILES.md) gives role-specific checks.
 
-Both Phase 1 prototype development images built and passed executable integration probes in fresh containers. These are local results, not official ACT certification or an agreed final acceptance standard.
+## Current dev / ci / cert results
 
-The separate [Ubuntu 24.04 ACT4 integration on 2026-10-24](validation/act4-2404-20261024.md) passed 51 upstream RV64 I-suite test ELFs. It is the first Phase 2 experiment; the Phase 1 results below remain unchanged.
+| Baseline | dev | ci | cert | Evidence |
+|---|---|---|---|---|
+| Ubuntu 24.04 | 51/51 | 51/51 | 51/51 | [Report](validation/profiles-2404-20261031.md), [matrix JSON](validation/profiles-2404-20261031.json) |
+| Ubuntu 26.04 | 51/51 | 51/51 | 51/51 | [Report](validation/profiles-2604-20261031.md), [matrix JSON](validation/profiles-2604-20261031.json) |
 
-The subsequent [automated ACT4 image build and offline verification](validation/act4-auto-2404-20261024.md) also passed 51/51 tests and the expected-failure control in a fresh container. Build and verification commands are in [ACT4.md](ACT4.md).
+Every role was tested offline in a fresh container as UID 1001, with two workers,
+4 GiB RAM, and 6 GiB including swap. Every run also rejected an incomplete
+one-instruction execution. The pinned selection is 51 RV64 I test ELFs;
+204 build DAG tasks are not 204 tests.
 
-The [Ubuntu 26.04 integration on 2026-10-25](validation/act4-auto-2604-20261025.md) extends the same recipe and pinned suite to the second baseline. It records the 26.04 offline results, version-selection guards, and a sequential regression using the retained Ubuntu 24.04 ACT4 image.
+The reports also record:
 
-The [Ubuntu 24.04 dev/ci/cert matrix on 2026-10-31](validation/profiles-2404-20261031.md) records the first role-specific builds, offline 51-test runs, alternate-source CI, GDB inspection, signatures and rejection controls. These are container prototypes; official certification and VM delivery remain outside the recorded checks.
+- dev: GDB recognizes the generated RISC-V ELF and disassembles its entry point;
+  both IDE configurations parse, but no IDE GUI or live remote debugging was tested.
+- ci: another upstream revision passes; a broken run command causes all 51 tests
+  to fail and the host wrapper to return 1; dependency drift is rejected.
+- cert: sealed-input checks, read-only-root runs, external test-key signing,
+  independent signature/hash verification, and rejection of modified inputs/results.
+- Six OpenSSL signature boundary regressions, ShellCheck, and Python core Ruff checks.
+- 26.04 compatibility: prior 24.04 images are unchanged, the original CLI syntax
+  passes, and the 24.04 cert image verifies the 26.04 artifact bundle.
 
-The [Ubuntu 26.04 role matrix](validation/profiles-2604-20261031.md) extends those checks to the second baseline, including cross-version signature verification and a regression of the original 24.04 command syntax. Together the records cover six container-role prototypes.
+These role tests ran on the same host. A second-machine Phase 2 validation is
+not recorded here. Existing images were reused for compatibility checks; those
+checks are not additional clean source builds.
 
-A later [public-checkout revalidation on 2026-10-16](validation/public-recheck-20261016.md) records a full original Ubuntu 24.04 rebuild and a staged Ubuntu 26.04 rebuild sharing the verified compiler. It also documents the local legacy Docker cache misses and the direct-script checks that were intentionally interrupted. The original results below remain the 2026-10-14 record.
+## Earlier milestones
 
-This report is intended for users and reviewers to understand what was tested and the limits of those results. Build instructions are in [README.md](README.md); the logs under `validation/` record the run reported here.
+Historical reports describe their own date and scope. Their remaining-work
+sections should not be read as the current project status.
 
-## Rerun the integration probes
+| Date | Milestone | Report and machine-readable record |
+|---|---|---|
+| 2026-10-14 | Phase 1 Ubuntu 24.04/26.04 C/C++ smoke probes | [Report](validation/phase1-20261014.md), [JSON](validation/results.json) |
+| 2026-10-16 | Public-checkout Phase 1 revalidation, including staged 26.04 build limitations | [Report](validation/public-recheck-20261016.md), [JSON](validation/public-recheck-20261016.json) |
+| 2026-10-24 | Initial manual Ubuntu 24.04 ACT4 integration | [Report](validation/act4-2404-20261024.md), [JSON](validation/act4-2404-20261024.json) |
+| 2026-10-24 | Automated Ubuntu 24.04 ACT4 image and offline verification | [Report](validation/act4-auto-2404-20261024.md), [JSON](validation/act4-auto-2404-20261024.json) |
+| 2026-10-25 | Automated Ubuntu 26.04 ACT4 image and 24.04 regression | [Report](validation/act4-auto-2604-20261025.md), [JSON](validation/act4-auto-2604-20261025.json) |
 
-After building both images, run:
+Each report links its selected logs and result records. Full generated ELFs,
+signed bundles, and detailed local audit/build directories are outside Git.
+Recorded image IDs identify the exact local runs; this repository currently
+publishes recipes and records rather than registry-hosted project images.
+
+## Scope and reruns
+
+The current record covers the pinned RV64 I integration on Spike. Full RVI20U64
+coverage, physical hardware, VM images, other host architectures, official final
+suite/signing policy, full GCC regressions, and IDE GUI sessions remain unverified.
+The local Ed25519 identity demonstrates artifact integrity and is not an ACT
+authority. Ubuntu package repositories remain live; bit-identical rebuilds are
+not claimed.
+
+To rerun existing role images, select the baseline and use a fresh output:
 
 ```bash
-docker run --rm riscv-dev:ubuntu-24.04 riscv-smoke-test
-docker run --rm riscv-dev:ubuntu-26.04 riscv-smoke-test
+ACT4_OUTPUT="$PWD/logs/my-new-2404-ci-run" \
+  bash scripts/check-profile.sh 24.04 ci
+ACT4_OUTPUT="$PWD/logs/my-new-2604-ci-run" \
+  bash scripts/check-profile.sh 26.04 ci
 ```
 
-Each command uses a fresh container and the default unprivileged image user. Success requires the C and C++ programs to exit 0 and the deliberate failure to exit 1; a timeout fails the probe. `scripts/build.sh` also runs this probe automatically after each image build. These commands rerun the integration check; they do not rebuild the images or refresh the recorded logs.
-
-## Environment and outcomes
-
-| Check | Ubuntu 24.04.5 LTS | Ubuntu 26.04.1 LTS |
-|---|---|---|
-| Host/container platform | linux/amd64 | linux/amd64 |
-| Final image build | PASS | PASS |
-| GCC and G++ version | 16.2.0 | 16.2.0 |
-| Compiler target | riscv64-unknown-elf | riscv64-unknown-elf |
-| Spike | v1.1.0 + attributed header backport | v1.1.0 + attributed header backport |
-| C ELF compilation and Spike execution | PASS | PASS |
-| C++20 std::array probe compilation and execution | PASS | PASS |
-| Deliberately failing ELF | exit 1, expected | exit 1, expected |
-| Fresh container as default user | PASS, uid 1001 | PASS, uid 1001 |
-
-The probe uses RV64IMAC plus Zicsr / LP64 and a freestanding `tohost` exit interface. Compiler default libraries are RV64GC / LP64D, so these probes deliberately do not link target standard libraries. Newlib and target C++ libraries were built, but their complete runtime behavior is not covered by this probe.
-
-## Verified inputs and build organization
-
-- Ubuntu mirror manifest digests independently matched Docker Hub's official Ubuntu manifests.
-- All five source archives were checksum verified; GCC matched the official SHA-512 list.
-- GCC 16.2.0 and Newlib were built from source on Ubuntu 24.04. The same compiler artifact was reused in both runtime baselines, with independent runtime probes. GCC was not separately rebuilt on Ubuntu 26.04.
-- Unmodified Spike v1.1.0 failed to compile on both baselines due to the missing `<cstdint>` include in `fesvr/device.h`.
-- Julien Olivain's upstream commit [0a7bb540](https://github.com/riscv-software-src/riscv-isa-sim/commit/0a7bb5403d0290cea8b2356179d92e4c61ffd51d) was backported; standalone and integrated Spike builds then passed on both baselines.
-- After the initial compiler build, the ignored `--disable-qemu` configure argument was removed. Rerunning configure without it produced a byte-for-byte identical generated Makefile. The compiler was not rebuilt for this nonfunctional cleanup.
-
-Runtime logs and machine-readable image/version records are in `validation/`. Full runtime-image compilation logs are retained in the local working audit directory; the source compiler's first build was captured in the tool transcript rather than a complete saved log file.
-
-The tiny bare-metal linker layout emits a warning about a combined RWX load segment. Memory permissions are not an assertion of this arithmetic/startup probe.
-
-## Not covered
-
-- Full GCC regression tests or all target standard-library functions.
-- Full ACT4 integration, architectural certification, ISA/ABI coverage matrices, or processor correctness.
-- Real RISC-V boards, arm64/riscv64 host images, VM images, Linux board sysroots, or the research memory-safety tool.
-- CI-minimal and locked certification image variants.
-- Bit-for-bit binary reproducibility across changing Ubuntu apt repositories.
-
-Reviewer agreement on acceptance criteria and subsequent milestones remains open.
+Choose a new empty path for every rerun. Cert additionally requires externally
+supplied signing and trusted verification keys; use the [role guide](PROFILES.md).
